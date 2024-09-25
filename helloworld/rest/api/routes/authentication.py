@@ -2,8 +2,7 @@ from __future__ import annotations
 
 from fastapi import APIRouter
 
-from helloworld.auth.features.authentication import get_identify_use_case, get_authenticate_use_case
-from helloworld.auth.features.authentication.entities import ResponseEntity
+from helloworld.auth.features.authentication import get_identify_use_case, get_authenticate_use_case, ResponseEntity
 from helloworld.account.features.user import UserEntity
 
 router = APIRouter()

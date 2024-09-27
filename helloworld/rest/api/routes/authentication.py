@@ -8,7 +8,7 @@ from helloworld.account.features.user import UserEntity
 
 router = APIRouter()
 
-class IdentityRequest(BaseModel):
+class IdentifyRequest(BaseModel):
     identifier: str
 
 class AuthenticateRequest(BaseModel):
@@ -16,15 +16,14 @@ class AuthenticateRequest(BaseModel):
     password: str | None
     user: UserEntity | None
 
-
 @router.post("/auth/identify")
-async def identity(body: IdentityRequest) -> IdentifyResponseEntity | None:
+async def identify(body: IdentifyRequest) -> IdentifyResponseEntity | None:
     identify_use_case = await get_identify_use_case()
     response = await identify_use_case.execute(identifier=body.identifier)
 
     return response
 
-@router.post("/auth/access-token")
+@router.post("/auth/authenticate")
 async def authenticate(body: AuthenticateRequest) -> AuthenticateResponseEntity | None:
     authenticate_use_case = await get_authenticate_use_case()
     response = await authenticate_use_case.execute(token=body.token, password=body.password, user=body.user)

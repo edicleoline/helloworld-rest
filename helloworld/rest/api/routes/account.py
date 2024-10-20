@@ -13,3 +13,7 @@ async def me(token: str = Depends(oauth2_scheme)) -> UserEntity | None:
     user = await me_use_case.execute()
 
     return user
+
+
+
+
